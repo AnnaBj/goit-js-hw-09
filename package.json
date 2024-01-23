@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/https://github.com/AnnaBj/goit-js-hw-09/",
+    "build": "vite build --base=/goit-js-hw-09/",
     "preview": "vite preview",
     "push": "git add . && git commit -m 'update' && git push"
   },

@@ -46,7 +46,7 @@ button {
   margin: 0 auto;
 }
 
-.back-button {
+.back-btn {
   display: flex;
   justify-content: center;
   width: fit-content;
@@ -60,14 +60,14 @@ button {
   /* font-family: 'Montserrat'; */
 }
 
-body > .back-button {
+body > .back-btn {
   margin: 20px 0 20px 20px;
   width: max-content;
   min-width: unset;
 }
 
-.back-button:hover,
-.back-button:focus {
+.back-btn:hover,
+.back-btn:focus {
   background-color: #6c8cff;
   box-shadow: 0 0 5px 1px rgba(112, 128, 144, 0.3);
 }
@@ -81,8 +81,6 @@ body > .back-button {
   width: 100vw;
   height: 100vh;
 }
-
-/* ==== GALLERY ==== */
 
 .lightbox-wrapper {
   background-color: rgba(46, 47, 66, 0.8);
@@ -135,8 +133,6 @@ body > .back-button {
   height: 100%;
   cursor: pointer;
 }
-
-/* ==== FORM ==== */
 
 .feedback-form {
   display: flex;
