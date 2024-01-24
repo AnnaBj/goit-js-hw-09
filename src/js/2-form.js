@@ -2,32 +2,7 @@ const feedback = document.querySelector('.feedback-form');
 const email = feedback.elements.email;
 const message = feedback.elements.message;
 
-const parsedData =
-  JSON.parse(localStorage.getItem('feedback-form-state')) || {};
-
-email.value = parsedData.email || '';
-message.value = parsedData.message || '';
-
-const removeError = element => {
-  element.classList.remove('error');
-  element.removeAttribute('placeholder');
-};
-
-email.addEventListener('focus', () => {
-  if (!email.classList.contains('focused')) {
-    return;
-  }
-  removeError(email);
-});
-
-message.addEventListener('focus', () => {
-  if (!message.classList.contains('focused')) {
-    return;
-  }
-  removeError(message);
-});
-
-feedback.addEventListener('input', () => {
+const updateParsedData = () => {
   localStorage.setItem(
     'feedback-form-state',
     JSON.stringify({
@@ -35,23 +10,46 @@ feedback.addEventListener('input', () => {
       message: message.value.trim(),
     })
   );
+
+  // Оновлюємо parsedData після кожної події введення
+  parsedData.email = email.value.trim();
+  parsedData.message = message.value.trim();
+};
+
+const parsedData =
+  JSON.parse(localStorage.getItem('feedback-form-state')) || {};
+
+email.value = parsedData.email || '';
+message.value = parsedData.message || '';
+
+email.addEventListener('input', () => {
+  updateParsedData();
+});
+
+message.addEventListener('input', () => {
+  updateParsedData();
 });
 
 feedback.addEventListener('submit', e => {
-  if (!email.value.trim()) {
+  const trimmedEmail = email.value.trim();
+  const trimmedMessage = message.value.trim();
+
+  if (!trimmedEmail || !trimmedMessage) {
     e.preventDefault();
-    email.classList.add('error', 'focused');
-    email.setAttribute('placeholder', 'E-mail is required to proceed');
+
+    if (!trimmedEmail) {
+      email.setCustomValidity('E-mail is required to proceed');
+    }
+
+    if (!trimmedMessage) {
+      message.setCustomValidity('Message is required to proceed');
+    }
+
     return;
   }
-  if (!message.value.trim()) {
-    e.preventDefault();
-    message.classList.add('error', 'focused');
-    message.setAttribute('placeholder', 'Message is required to proceed');
-    return;
-  }
+
   e.preventDefault();
-  console.log(parsedData);
+  console.log({ email: trimmedEmail, message: trimmedMessage });
   localStorage.removeItem('feedback-form-state');
   feedback.reset();
 });

@@ -98,17 +98,3 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
-
-lightbox.on('show.simplelightbox', e => {
-  document.body.classList.add('modal-open');
-});
-
-lightbox.on('close.simplelightbox', e => {
-  document.body.classList.remove('modal-open');
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    lightbox.close();
-  }
-});
