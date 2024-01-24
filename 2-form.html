@@ -17,22 +17,24 @@
       rel="stylesheet"
     />
     
-    <title>Js-Hw-09</title>
+    <title>Form</title>
+    <script type="module" crossorigin src="/goit-js-hw-09/commonHelpers2.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-09/assets/modulepreload-polyfill-3cfb730f.js">
     <link rel="stylesheet" href="/goit-js-hw-09/assets/styles-8bffc6d7.css">
   </head>
   <body>
-    <ul class="index-list">
-      <li><a class="back-btn" href="./1-gallery.html">Gallery</a></li>
-      <li><a class="back-btn" href="./2-form.html">Form</a></li>
-    </ul>
-    <script>
-      window.addEventListener(
-        'load',
-        () => {
-          document.body.classList.add('visible');
-        },
-        { once: true }
-      );
-    </script>
+    <a class="back-btn" href="./index.html">Main</a>
+    <form class="feedback-form" autocomplete="off">
+      <label>
+        Email
+        <input type="email" name="email" autofocus />
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="8"></textarea>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+    
   </body>
 </html>

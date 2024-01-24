@@ -17,22 +17,18 @@
       rel="stylesheet"
     />
     
-    <title>Js-Hw-09</title>
+    <title>Gallery</title>
+    <script type="module" crossorigin src="/goit-js-hw-09/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-09/assets/modulepreload-polyfill-3cfb730f.js">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-09/assets/vendor-870f0eb5.js">
+    <link rel="stylesheet" href="/goit-js-hw-09/assets/vendor-ef539242.css">
     <link rel="stylesheet" href="/goit-js-hw-09/assets/styles-8bffc6d7.css">
   </head>
   <body>
-    <ul class="index-list">
-      <li><a class="back-btn" href="./1-gallery.html">Gallery</a></li>
-      <li><a class="back-btn" href="./2-form.html">Form</a></li>
-    </ul>
-    <script>
-      window.addEventListener(
-        'load',
-        () => {
-          document.body.classList.add('visible');
-        },
-        { once: true }
-      );
-    </script>
+    <a class="back-btn" href="./index.html">Main</a>
+    <div class="container">
+      <ul class="gallery"></ul>
+    </div>
+    
   </body>
 </html>
