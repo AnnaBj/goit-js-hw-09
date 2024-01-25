@@ -10,45 +10,35 @@ const updateParsedData = () => {
       message: message.value.trim(),
     })
   );
-
-  // Оновлюємо parsedData після кожної події введення
-  parsedData.email = email.value.trim();
-  parsedData.message = message.value.trim();
 };
 
 const parsedData =
   JSON.parse(localStorage.getItem('feedback-form-state')) || {};
-
 email.value = parsedData.email || '';
 message.value = parsedData.message || '';
 
-email.addEventListener('input', () => {
-  updateParsedData();
-});
-
-message.addEventListener('input', () => {
-  updateParsedData();
+feedback.addEventListener('input', e => {
+  if (e.target === email || e.target === message) {
+    updateParsedData();
+  }
 });
 
 feedback.addEventListener('submit', e => {
+  e.preventDefault();
+  
   const trimmedEmail = email.value.trim();
   const trimmedMessage = message.value.trim();
 
   if (!trimmedEmail || !trimmedMessage) {
-    e.preventDefault();
-
     if (!trimmedEmail) {
       email.setCustomValidity('E-mail is required to proceed');
     }
-
     if (!trimmedMessage) {
       message.setCustomValidity('Message is required to proceed');
     }
-
     return;
   }
 
-  e.preventDefault();
   console.log({ email: trimmedEmail, message: trimmedMessage });
   localStorage.removeItem('feedback-form-state');
   feedback.reset();
